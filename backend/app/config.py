@@ -21,6 +21,7 @@ def load_environment(env_path: Path | None = None) -> Dict[str, str]:
         "DATABASE_URL": os.getenv("DATABASE_URL", ""),
         "REDIS_URL": os.getenv("REDIS_URL", "redis://localhost:6379/0"),
         "CHROMA_PERSIST_DIR": os.getenv("CHROMA_PERSIST_DIR", "./chroma_data"),
+        "GEMINI_API_KEY": os.getenv("GEMINI_API_KEY", ""),
     }
 
 
