@@ -19,6 +19,7 @@ def load_environment(env_path: Path | None = None) -> Dict[str, str]:
         "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", ""),
         "ANTHROPIC_API_KEY": os.getenv("ANTHROPIC_API_KEY", ""),
         "DATABASE_URL": os.getenv("DATABASE_URL", ""),
+        "REDIS_URL": os.getenv("REDIS_URL", "redis://localhost:6379/0"),
     }
 
 
