@@ -1,4 +1,4 @@
-﻿import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import Workspace from './pages/Workspace'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'

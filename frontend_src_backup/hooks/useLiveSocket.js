@@ -1,4 +1,4 @@
-﻿import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef } from 'react'
 
 const WS_URL = 'ws://localhost:8000/ws/agent-run'
 

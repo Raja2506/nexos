@@ -1,4 +1,5 @@
-﻿function AgentNode({ label, status, index }) {
+function AgentNode({ label, status, index }) {
+  // status: 'pending' | 'active' | 'done'
   const stateClass = status === 'done' ? 'active' : status === 'active' ? 'warn animate-pulse' : ''
 
   return (
