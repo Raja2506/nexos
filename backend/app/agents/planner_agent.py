@@ -1,5 +1,5 @@
 import json
-from anthropic import Anthropic
+from google import genai
 from app.agents.base_agent import BaseAgent
 from app.config import SETTINGS
 
@@ -12,7 +12,7 @@ class PlannerAgent(BaseAgent):
 
     def __init__(self):
         super().__init__(name="PlannerAgent")
-        self.client = Anthropic(api_key=SETTINGS["ANTHROPIC_API_KEY"])
+        self.client = genai.Client(api_key=SETTINGS["GEMINI_API_KEY"])
 
     async def run(self, input_data: dict) -> dict:
         goal = input_data["goal"]
@@ -24,13 +24,15 @@ Return ONLY valid JSON, no other text, in this exact format:
 
 Goal: {goal}"""
 
-        response = self.client.messages.create(
-            model="claude-sonnet-5",
-            max_tokens=500,
-            messages=[{"role": "user", "content": prompt}],
+        response = self.client.models.generate_content(
+            model="gemini-flash-latest",
+            contents=prompt,
         )
 
-        raw_text = response.content[0].text
+        raw_text = response.text.strip()
+        if raw_text.startswith("```"):
+            raw_text = raw_text.split("```")[1].replace("json", "", 1).strip()
+
         task_graph = json.loads(raw_text)
 
         self.log(f"Generated {len(task_graph['steps'])} steps")
