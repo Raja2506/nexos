@@ -10,3 +10,5 @@ node_modules/
 dist/
 build/
 chroma_data/
+chart_outputs/
+
