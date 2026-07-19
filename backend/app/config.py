@@ -1,7 +1,6 @@
-import os
+﻿import os
 from pathlib import Path
 from typing import Dict
-
 from dotenv import load_dotenv
 
 
@@ -22,6 +21,7 @@ def load_environment(env_path: Path | None = None) -> Dict[str, str]:
         "REDIS_URL": os.getenv("REDIS_URL", "redis://localhost:6379/0"),
         "CHROMA_PERSIST_DIR": os.getenv("CHROMA_PERSIST_DIR", "./chroma_data"),
         "GEMINI_API_KEY": os.getenv("GEMINI_API_KEY", ""),
+        "JWT_SECRET": os.getenv("JWT_SECRET", "dev-secret-change-me"),
     }
 
 

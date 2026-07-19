@@ -10,10 +10,10 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)
     name = Column(String)
     auth_provider = Column(String)
+    hashed_password = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     tasks = relationship("Task", back_populates="user")
-
 
 class Task(Base):
     __tablename__ = "tasks"
