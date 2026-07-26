@@ -56,6 +56,18 @@ jobs:
         run: |
           alembic upgrade head
 
+      - name: Start server in background
+        working-directory: backend
+        env:
+          DATABASE_URL: postgresql://nexos:nexos_pass@localhost:5432/nexos_db
+          REDIS_URL: redis://localhost:6379/0
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+        run: |
+          python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          sleep 5
+
       - name: Run tests
         working-directory: backend
         env:
