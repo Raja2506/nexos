@@ -18,3 +18,5 @@ nexos_upload.zip
 node_modules/
 
 frontend_src_backup/
+
+frontend/.env

@@ -22,6 +22,7 @@ def load_environment(env_path: Path | None = None) -> Dict[str, str]:
         "CHROMA_PERSIST_DIR": os.getenv("CHROMA_PERSIST_DIR", "./chroma_data"),
         "GEMINI_API_KEY": os.getenv("GEMINI_API_KEY", ""),
         "JWT_SECRET": os.getenv("JWT_SECRET", "dev-secret-change-me"),
+        "GOOGLE_CLIENT_ID": os.getenv("GOOGLE_CLIENT_ID", ""),
     }
 
 
