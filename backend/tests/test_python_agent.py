@@ -1,11 +1,11 @@
 # backend/tests/test_python_agent.py
-import asyncio
 from app.agents.python_agent import PythonAgent
 
-async def main():
+
+async def test_python_agent_average_calculation():
     agent = PythonAgent()
     result = await agent.run({"task": "Find the average of [12, 45, 67, 23, 89]"})
-    print("Code:\n", result["code"])
-    print("Output:", result["output"])
 
-asyncio.run(main())
+    assert result is not None
+    assert "code" in result
+    assert "output" in result

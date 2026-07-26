@@ -1,8 +1,8 @@
 # backend/tests/test_task_splitter_agent.py
-import asyncio
 from app.agents.task_splitter_agent import TaskSplitterAgent
 
-async def main():
+
+async def test_task_splitter_agent_dependency_graph():
     agent = TaskSplitterAgent()
     result = await agent.run({
         "steps": [
@@ -10,6 +10,5 @@ async def main():
             {"id": "2", "description": "Write a summary report"},
         ]
     })
-    print(result)
 
-asyncio.run(main())
+    assert result is not None

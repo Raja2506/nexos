@@ -1,11 +1,11 @@
 # backend/tests/test_sql_agent.py
-import asyncio
 from app.agents.sql_agent import SQLAgent
 
-async def main():
+
+async def test_sql_agent_basic_query():
     agent = SQLAgent()
     result = await agent.run({"question": "How many tasks are there in total?"})
-    print("SQL:", result["sql"])
-    print("Rows:", result["rows"])
 
-asyncio.run(main())
+    assert result is not None
+    assert "sql" in result
+    assert "rows" in result
